@@ -48,9 +48,7 @@ export class LoginPage extends BasePage {
 
     this.debug('... Login: input details and click Login - OK');
 
-    let mainDashboard = new MainDashboardPage()
-    await mainDashboard.open()
-    return mainDashboard;
+    return new MainDashboardPage();
   }
 
 }

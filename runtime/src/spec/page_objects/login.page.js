@@ -53,9 +53,7 @@ class LoginPage extends base_page_1.BasePage {
             yield this.passwordInput.enterText(password);
             yield this.loginButton.clickWhenReady();
             this.debug('... Login: input details and click Login - OK');
-            let mainDashboard = new main_dashboard_page_1.MainDashboardPage();
-            yield mainDashboard.open();
-            return mainDashboard;
+            return new main_dashboard_page_1.MainDashboardPage();
         });
     }
 }

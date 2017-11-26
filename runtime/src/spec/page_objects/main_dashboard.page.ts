@@ -119,6 +119,13 @@ Page layout
 
   /* Helper function to create a new OSIO space */
   async createNewSpace(spaceName: string): Promise<SpaceDashboardPage> {
+    let url = await browser.getCurrentUrl();
+    support.debug('... current url:', url);
+
+    support.debug('... waiting for the url to contain : ', this.url);
+    // Make sure we're on the "_home" page
+    await browser.wait(until.urlContains(this.url), 10000);
+
     await this.header.recentItemsDropdown.createSpaceItem.select();
 
     // TODO: create a new BaseFragment for the model Dialog
@@ -128,7 +135,7 @@ Page layout
     await this.createSpaceButton.clickWhenReady();
     await this.noThanksButton.clickWhenReady();
 
-    let url = await browser.getCurrentUrl();
+    url = await browser.getCurrentUrl();
     support.debug('... current url:', url);
 
     support.debug('... waiting for the url to contain spacename: ', spaceName);

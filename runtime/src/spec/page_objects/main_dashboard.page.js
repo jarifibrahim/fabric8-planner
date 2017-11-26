@@ -110,13 +110,17 @@ class MainDashboardPage extends app_page_1.AppPage {
     /* Helper function to create a new OSIO space */
     createNewSpace(spaceName) {
         return __awaiter(this, void 0, void 0, function* () {
+            let url = yield protractor_1.browser.getCurrentUrl();
+            support.debug('... current url:', url);
+            support.debug('... waiting for the url to contain : ', this.url);
+            yield protractor_1.browser.wait(protractor_1.ExpectedConditions.urlContains(this.url), 10000);
             yield this.header.recentItemsDropdown.createSpaceItem.select();
             // TODO: create a new BaseFragment for the model Dialog
             yield this.newSpaceName.enterText(spaceName);
             yield this.devProcessPulldown.enterText('Scenario Driven Planning');
             yield this.createSpaceButton.clickWhenReady();
             yield this.noThanksButton.clickWhenReady();
-            let url = yield protractor_1.browser.getCurrentUrl();
+            url = yield protractor_1.browser.getCurrentUrl();
             support.debug('... current url:', url);
             support.debug('... waiting for the url to contain spacename: ', spaceName);
             // TODO: make the timeout a config

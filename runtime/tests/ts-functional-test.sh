@@ -15,7 +15,7 @@ source "$SCRIPT_DIR/lib.inc.sh"
 validate_config() {
   local ret=0
 
-  file_must_exist "protractor config", "$PROTRACTOR_CONF.ts" || ret=1
+  file_must_exist "protractor config", "$PROTRACTOR_CONF.js" || ret=1
   validate_test_config OSIO_USERNAME "$OSIO_USERNAME" || ret=1
   validate_test_config OSIO_PASSWORD "$OSIO_PASSWORD" || ret=1
 
