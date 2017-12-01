@@ -46,6 +46,7 @@ import { WorkItemService } from '../../services/work-item.service';
 import { MockHttp } from '../../mock/mock-http';
 import { HttpService } from '../../services/http-service';
 import { LabelService } from '../../services/label.service';
+import { AssigneesModule } from './../assignee/assignee.module';
 
 let providers = [];
 
@@ -92,6 +93,7 @@ if (process.env.ENV == 'inmemory') {
   imports: [
     ActionModule,
     AlmIconModule,
+    AssigneesModule,
     BsDropdownModule.forRoot(),
     CommonModule,
     DialogModule,
