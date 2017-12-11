@@ -363,11 +363,11 @@ testSupport.clickElement(this.workItemDescriptionCancelIcon, "workItemDescriptio
   }
 
   get AssigneeDropdownListItem() {
-    return element(by.xpath('.//f8-select-dropdown[@id="f8-add-assignee-dropdown"]//li'));
+    return element.all(by.xpath('.//f8-select-dropdown[@id="f8-add-assignee-dropdown"]//li'));
   }
 
   clickAssigneeListItem(username) {
-    element(by.xpath('.//f8-select-dropdown[@id="f8-add-assignee-dropdown"]//b[text()="'+ username +'"]')).click();
+    element(by.xpath('.//f8-select-dropdown[@id="f8-add-assignee-dropdown"]//*[contains(text(),"'+ username +'")]')).click();
   }
 
   get closeAssigneeDropdown () {

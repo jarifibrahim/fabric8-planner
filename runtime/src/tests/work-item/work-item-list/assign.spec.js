@@ -18,7 +18,7 @@ var WorkItemListPage = require('./page-objects/work-item-list.page'),
   constants = require('./constants'),
   testSupport = require('./testSupport');
 
-fdescribe('Work item list', function () {
+describe('Work item list', function () {
   var page;
   var until = protractor.ExpectedConditions;
   var workItemTitle = "The test workitem title";
@@ -48,12 +48,13 @@ fdescribe('Work item list', function () {
       //to Verify that workitems cannot be assigned to non-existent users
       expect(detailPage.AssigneeDropdownListItem.getText()).not.toContain("some user");
 
-      detailPage.setAssigneeSearch((EXAMPLE_USER_1, false));
+      detailPage.setAssigneeSearch(EXAMPLE_USER_1, false);
       expect(detailPage.AssigneeDropdownListItem.getText()).toContain(EXAMPLE_USER_1);
       expect(detailPage.AssigneeDropdownListItem.getText()).not.toContain("some user");
 
-      //to  user has been clicked
+      // Add two assginees
       detailPage.clickAssigneeListItem(EXAMPLE_USER_1);
+      detailPage.setAssigneeSearch(EXAMPLE_USER_2, false);
       detailPage.clickAssigneeListItem(EXAMPLE_USER_2);
       detailPage.clickCloseAssigneeDropdown();
       expect(detailPage.AssigneeDropdown.isDisplayed()).toBe(false);
