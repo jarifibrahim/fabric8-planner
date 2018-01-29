@@ -19,7 +19,8 @@ def ci (){
             container('ui'){
                 sh '''
         npm install
-        HEADLESS_MODE=true ./tests/run_js_functional_tests.sh smokeTest
+        cd src/tests/functionalTests
+        HEADLESS_MODE=true ./run_ts_functional_tests.sh smokeTest
 '''
             }
         }
