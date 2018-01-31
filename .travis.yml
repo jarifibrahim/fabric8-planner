@@ -1,4 +1,6 @@
 sudo: required
+notifications:
+  email: false
 language: node_js
 addons:
   apt:
@@ -8,7 +10,10 @@ addons:
       - google-chrome-stable
 node_js:
   - "8"
-cache: npm
+cache:
+  directories:
+  - home/travis/build/jarifibrahim/fabric8-planner/node_modules
+  - home/travis/build/jarifibrahim/fabric8-planner/runtime/node_modules
 install:
  - npm install
  - npm run build
