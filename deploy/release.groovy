@@ -20,7 +20,7 @@ def ci (){
                 sh '''
         npm install
         cd src/tests/functionalTests
-        HEADLESS_MODE=true ./run_ts_functional_tests.sh smokeTest
+        DEBUG=true HEADLESS_MODE=true ./run_ts_functional_tests.sh smokeTest
 '''
             }
         }
