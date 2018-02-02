@@ -11,10 +11,17 @@ addons:
 node_js:
   - "8"
 install:
+ - top -n2
  - free -m
  - npm install
+ - free -m
  - npm run build
+ - free -m
  - cd runtime
+ - free -m
  - npm install
+ - free -m
 script:
  - HEADLESS_MODE=true npm run test:funcsmoke
+ - free -m
+ - top -n2
