@@ -11,9 +11,13 @@ addons:
 node_js:
   - "8"
 install:
+ - npm install codecov -g
  - npm install
- - npm run build
- - cd runtime
- - npm install
+#  - npm run build
+#  - cd runtime
+#  - npm install
 script:
- - HEADLESS_MODE=true npm run test:funcsmoke
+#  - HEADLESS_MODE=true npm run test:funcsmoke
+  - npm run test:unit
+after_success:
+  - codecov
