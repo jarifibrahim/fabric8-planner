@@ -53,8 +53,10 @@ module.exports = function(config) {
             ]
         },
 
-        reporters: ['progress', 'karma-typescript', 'mocha'],
-
+        reporters: ['progress', 'karma-typescript', 'coverage'],
+        coverageReporter: {
+            reporters: [{type: 'lcov'}]
+          },
         browsers: ['PhantomJS'],
 
         singleRun: true
