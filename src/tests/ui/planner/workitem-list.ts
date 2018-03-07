@@ -20,6 +20,7 @@ export class WorkItemList extends BaseElement {
   }
 
   async clickWorkItem(title: string) {
+    await this.overlay.untilHidden();    
     await this.workItem(title).openQuickPreview();
   }
 

@@ -3,7 +3,7 @@ export class Constants {
   attribute2 = "Label";
   attribute3 = "Creator";
   attribute4 = "Assignees";
-  label = 'Example Label 0';
+  label = 'sample_label_1';
   label1 = 'Example Label 1';
   linkType = 'tests';
   newLabel = "new label";
@@ -12,6 +12,8 @@ export class Constants {
   areaTitle2 = '/' + process.env.SPACE_NAME + '/Area_2';
   iteration1 = '/' + process.env.SPACE_NAME + '/Iteration_1/Iteration1_5';
   iteration2 = '/' + process.env.SPACE_NAME + '/Iteration_2';
+  parentIteration = 'Iteration_2';
+  iteration3 = '/' + process.env.SPACE_NAME;
   newWorkItem1 = {
     title: "Workitem Title",
     description: "Describes the work item"
