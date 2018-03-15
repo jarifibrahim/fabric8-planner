@@ -15,6 +15,7 @@ export class WorkItemQuickPreview extends ui.BaseElement {
   titleInput = new ui.TextInput(this.titleDiv.$('textarea'), 'WorkItem Title Input');
   titleSaveButton = new ui.Button(this.titleDiv.$('.inlineinput-btn-save'), 'WorkItem Title Save button');
   titleCancelButton = new ui.Button(this.titleDiv.$('.inlineinput-btn-cancel'), 'Workitem Title cancel button');
+  titleErrorMessage = new ui.BaseElement(this.$('.error-message small'), 'WorkItem Title error message');    
 
   /* UI elements for the middle section of the workitem preview */
   assigneeDropdown = new ui.Dropdown(
@@ -251,6 +252,10 @@ export class WorkItemQuickPreview extends ui.BaseElement {
     return linkList.indexOf(linkItem) > -1;
   }
 
+  async hasTitleError(error: string) {
+    return await this.titleErrorMessage.getTextWhenReady() === error;
+  }
+
   async updateTitle(title: string, append: boolean = false) {
     await this.titleDiv.clickWhenReady();
     if(!append) {
@@ -258,7 +263,6 @@ export class WorkItemQuickPreview extends ui.BaseElement {
     }
     await this.titleInput.enterText(title);
     await this.titleSaveButton.clickWhenReady();
-    await this.titleSaveButton.untilHidden();
   }
 
   async updateDescription(description: string, append: boolean = false) {
