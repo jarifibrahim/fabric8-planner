@@ -9,9 +9,9 @@ export class WorkItemListEntry extends ui.BaseElement {
   type = new ui.BaseElement(this.$('datatable-body-cell:nth-child(3) work-item-cell > div'), 'WorkItem Type');
   title = new ui.Clickable(this.$('.wi-detail-title p'), 'WorkItem Title');
   labels = new ui.BaseElement(this.$('f8-label'), 'WorkItem Labels');
+  labelName =  new ui.Clickable(this.labels.$('.label-name'), 'WorkItem Label' )
   inlineCloseButton = new ui.Clickable(this.$('.pficon-close'),'inline close');
   treeExpander = new ui.Clickable(this.$('.tree-icon'), 'WorkItem Expander');
-
   // TODO
   status: ui.BaseElement;
   iteration= new ui.BaseElement(this.$('#table-iteration'), 'Table Workitem Iteration Name');
@@ -41,11 +41,12 @@ export class WorkItemListEntry extends ui.BaseElement {
   async clickExpandWorkItem() {
     return await this.treeExpander.clickWhenReady();
   }
+  
   async getIterationText() {
     return await this.iteration.getTextWhenReady();
   }
 
-  async clickExpandWorkItem() {
-    return await this.treeExpander.clickWhenReady();
+  async clickLabel() {
+    await this.labelName.clickWhenReady();
   }
 }
