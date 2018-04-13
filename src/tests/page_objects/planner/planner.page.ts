@@ -33,9 +33,9 @@ export class PlannerPage extends AppPage {
     await this.quickAdd.addWorkItem(item);
   }
 
-  async createInlineWorkItem(item: planner.WorkItem) {
+  async createInlineWorkItem(item, type : planner.WorkItem) {
     this.debug('create inline item', JSON.stringify(item));
-    await this.inlineQuickAdd.addInlineWorkItem(item);
+    await this.inlineQuickAdd.addInlineWorkItem(item, type);
   }
 
 }
