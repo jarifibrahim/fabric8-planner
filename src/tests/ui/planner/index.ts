@@ -13,5 +13,5 @@ type WorkItemType = 'task' | 'feature' | 'bug';
 export interface WorkItem {
   title: string;
   description?: string;
-  type?: WorkItemType;
+  type?: string;
 }

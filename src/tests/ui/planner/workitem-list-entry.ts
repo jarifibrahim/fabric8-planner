@@ -37,10 +37,7 @@ export class WorkItemListEntry extends ui.BaseElement {
   async getInlineQuickAddClass() {
     return await this.inlineQuickAdd.getAttribute('className');
   }
-
-  async clickExpandWorkItem() {
-    return await this.treeExpander.clickWhenReady();
-  }
+  
   async getIterationText() {
     return await this.iteration.getTextWhenReady();
   }

@@ -22,8 +22,9 @@ export class WorkItemInlineQuickAdd extends ui.BaseElement {
     await this.addAndOpenButton.ready();
   }
 
-  async addInlineWorkItem({ title, description = '', type = 'feature' }: WorkItem) {
-    await this.titleTextInlineInput.ready();
+  async addInlineWorkItem( title, type) {
+    await this.workItemTypeDropdown.clickWhenReady();
+    await this.workItemTypeDropdown.select(type);
     await this.titleTextInlineInput.enterText(title);
     await this.addInlineQuickAddButton.clickWhenReady();
     // TODO add more confirmation that the item has been added
