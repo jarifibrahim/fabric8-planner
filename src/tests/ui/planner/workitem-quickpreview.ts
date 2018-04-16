@@ -92,7 +92,7 @@ export class WorkItemQuickPreview extends ui.BaseElement {
   commentsField = new ui.Clickable(this.commentDiv.$('.editor-box.editor-preview.placeholder'), 'comments clickable field');
   commentsInputField = new ui.TextInput(this.commentDiv.$('.editor-box.editor-markdown'), 'comment input field');
   commentSaveButton = new ui.Button(this.commentDiv.$('.btn-save'), 'Comment save button');
-  commentCancelButton = new ui.Button(this.commentDiv.$$('.fl.btn.btn-primary.pull-right.action-btn').first(), 'Comment cancel button');
+  commentCancelButton = new ui.Button(this.commentDiv.$('.fl.btn.btn-default.pull-right.action-btn'), 'Comment cancel button');
   commentsText = new ui.BaseElementArray(this.$$('.f8-comment-body .editor-box.editor-preview'), 'Comment List');
 
   constructor(ele: ElementFinder, name: string = '') {
@@ -135,6 +135,7 @@ export class WorkItemQuickPreview extends ui.BaseElement {
     await this.iterationDropdown.clickWhenReady();
     await this.iterationDropdown.select(iterationTitle);
     await this.iterationSaveButton.clickWhenReady();
+    await this.notificationToast.untilCount(1);
   }
 
   async typeaHeadSearch(iterationTitle: string) {
@@ -231,7 +232,11 @@ export class WorkItemQuickPreview extends ui.BaseElement {
 
   async hasComment(comment: string): Promise<Boolean> {
     await this.ready();
-    let commentList = await this.commentsText.getTextWhenReady();
+    await this.commentDiv.scrollIntoView();
+    let commentList:String = "" ;
+    if (await this.commentsText.isPresent()) {
+      commentList = await this.commentsText.getTextWhenReady();
+    }
     this.debug("Comment list: " + commentList);
     return commentList.indexOf(comment) > -1;
   }
@@ -247,7 +252,9 @@ export class WorkItemQuickPreview extends ui.BaseElement {
 
   async hasIteration(iterationTitle: string): Promise<Boolean> {
     await this.loadingAnimation.untilCount(0);
+    await browser.sleep(1000);    
     let iteration = await this.iterationDropdown.getTextWhenReady();
+    this.debug(" iteration : " + iteration);
     return iteration === iterationTitle;
   }
 
