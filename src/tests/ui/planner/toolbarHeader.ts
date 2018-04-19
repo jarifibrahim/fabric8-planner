@@ -4,6 +4,7 @@ import * as ui from '../../ui';
 
 export class ToolbarHeader extends BaseElement {
   notificationToast = new ui.BaseElementArray($$('pfng-toast-notification'), 'Notification Toast');
+  header = new BaseElement(this.$('.toolbar-pf-view-selector'), 'header div');
   showTree = new BaseElement(this.$('.toolbar-pf-view-selector #showTree'), 'show Tree');
   filterDropdown = new ui.Dropdown(
     this.$('.input-group-btn'),
@@ -31,6 +32,7 @@ export class ToolbarHeader extends BaseElement {
 
   async ready() {
     await super.ready();
+    await this.header.untilPresent();
   }
 
   async clickShowTree() {
